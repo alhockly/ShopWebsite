@@ -2,17 +2,21 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Book page</title>
+  <title>Login page</title>
   <style>
   @import url("/sitewide.css");
-	div.item{
+	div.login{
 		border:solid;
 		background-color:#B575A5;
 		padding:20px;
 		display:block;
-		margin:10px;
-		height:100px;
+		margin:0px 100px;
+		height:20%;
 	}
+.loginform{
+	
+	align:left;
+}
   
   body {
 	  margin:0;
@@ -72,61 +76,39 @@ li a:hover:not(.active) {
   <li><a href="/index.php">Home</a></li>
   <li><a href="/Books.php">Books</a></li>
   <li><a href="/cds.php">CDs</a></li>
-  <li><a href="/games.php">Games</a></li>
+  <li><a href="/games.php" >Games</a></li>
   <li><a href="/dvds.php">DvDs</a></li>
-  <li style="#float:right;"><a href="/login.php">Login</a></li>
+  <li style="#float:right;" class="active"><a href="#login">Login</a></li>
 </ul>
 
 <div style="padding:20px;margin-top:50px;text-align:center;">
 
+	<h1 class="title">Log on Page</h1>
     	
    
-
-
-
-	<p class="title"> Buying
-
-	<?php
-	##check login session
-	
-	##if no session > send to login page
-		header('Location:/login.php');
-		
-	##if session > process payment with session account info
-	
-	
-	
-	
-	$item_code = $_GET[ 'item' ];
-	echo $item_code;
-	# Connect to a database and access a table
-
-	$dbname = 'ah17451'; # Change to your username
-	$dbuser = 'root';
-	$dbpass = 'alex';
-	$dbhost = 'localhost';
-
-	$link = mysqli_connect( $dbhost, $dbuser, $dbpass )
-	or die( "Unable to Connect to '$dbhost'" );
-
-	mysqli_select_db( $link, $dbname )
-	or die("Could not open the db '$dbname'");
-
-	$test_query = "select * from inventory";
-	$result = mysqli_query( $link, $test_query );
-
-	while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
-	{
-		
-		
-	}
-
-	mysqli_free_result( $result );
-	mysqli_close( $link );
-	?>
-
-	</p>
 </div>
+
+<div class="login" style="text-align:center;float:center;text-align:center;">
+	
+	<form>
+	<h1>Username</h1>
+	<input class="loginform" type="text" name="User" value="">
+	<br>
+	<h1>Password</h1>
+	<input class="loginform" type="text" name="Pass" value="">
+	<br>
+	 <input type="submit" value="Log on" style="margin-top:10px;">
+    
+	</form>
+</div>
+
+
+<?php
+##LOGIN CODE
+?>
+
+
+
 
 </body>
 </html>

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Games page</title>
   <style>
+  @import url("/sitewide.css");
 	div.item{
 		border:solid;
 		background-color:#B575A5;
@@ -55,7 +56,7 @@ li a:hover:not(.active) {
   
  .itemimg{
 	 height:100%;
-	
+	#width:20%;
 	 padding-right: 20px;
 	 
  }
@@ -73,12 +74,12 @@ li a:hover:not(.active) {
   <li><a href="/cds.php">CDs</a></li>
   <li><a class="active" >Games</a></li>
   <li><a href="/dvds.php">DvDs</a></li>
-  <li style="#float:right;"><a href="/login">Login</a></li>
+  <li style="#float:right;"><a href="/login.php">Login</a></li>
 </ul>
 
 <div style="padding:20px;margin-top:50px;text-align:center;">
 
-	<h1>Welcome to the Games section</h1>
+	<h1 class="title" >Welcome to the Games section</h1>
     	
    
 </div>
@@ -116,9 +117,8 @@ while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 	
  
 	echo "<img class='itemimg'  src=$imgaddress align='left'>";
-	echo "<h3>",$row[ 'item_name' ], '</h3>';
-	echo $row[ 'item_author' ], ' <br><div align="right">£', $row[ 'item_price' ],'</div>',"<br />\n";
-	echo "</a>";
+	echo "<h3 >",$row[ 'item_name' ], '</h3>';
+	echo $row[ 'item_author' ], ' <br></a><div align="right" class="price"><b>£', $row[ 'item_price' ],'</b></div>',"<br />\n";
 	echo '</div>';
 }
 

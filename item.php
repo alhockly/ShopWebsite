@@ -2,17 +2,16 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Movies page</title>
+  <title>Book page</title>
   <style>
   @import url("/sitewide.css");
-  
-	div.item{
+	div.basic{
 		border:solid;
 		background-color:#B575A5;
 		padding:20px;
 		display:block;
-		margin:10px;
-		height:100px;
+		margin:50px 100px;
+		
 	}
   
   body {
@@ -61,6 +60,10 @@ li a:hover:not(.active) {
 	 padding-right: 20px;
 	 
  }
+ .main_img{
+	 
+	 height:300px;
+ }
   
   </style>
   
@@ -74,19 +77,20 @@ li a:hover:not(.active) {
   <li><a href="/Books.php">Books</a></li>
   <li><a href="/cds.php">CDs</a></li>
   <li><a href="/games.php">Games</a></li>
-  <li><a class="active">DvDs</a></li>
+  <li><a href="/dvds.php">DvDs</a></li>
   <li style="#float:right;"><a href="/login.php">Login</a></li>
 </ul>
 
-<div style="padding:20px;margin-top:50px;text-align:center;">
 
-	<h1 class="title">Welcome to the Films section</h1>
-    	
-   
-</div>
 
 
 <?php
+
+
+
+$item_code = $_GET[ 'item' ];
+
+#echo $item_code;
 # Connect to a database and access a table
 
 $dbname = 'ah17451'; # Change to your username
@@ -100,33 +104,44 @@ or die( "Unable to Connect to '$dbhost'" );
 mysqli_select_db( $link, $dbname )
 or die("Could not open the db '$dbname'");
 
-$test_query = "select * from inventory where item_group=1004";
+$test_query = "select * from inventory where item_code='$item_code'";
 $result = mysqli_query( $link, $test_query );
 
 while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 {
+	$name = $row['item_name'];
+	$author = $row['item_author'];
+	$desc = $row['item_description'];
+	$imgurl = '/img/'.$row['item_image_loc'];
+	$price = $row['item_price'];
 	
-	$url= "/item.php?item=". $row['item_code'];
-	#echo $url;
-	
-	$imgaddress="/img/" . $row['item_image_loc'];
-	#echo $imgaddress;
-	
-	echo '<div class="item">';
-	echo "<a href='$url'>";
-	
-	
- 
-	echo "<img class='itemimg'  src=$imgaddress align='left'>";
-	echo "<h3>",$row[ 'item_name' ], '</h3>';
-	echo $row[ 'item_author' ], ' <br></a><div align="right" class="price"><b>£', $row[ 'item_price' ],'</b></div>',"<br />\n";
-	echo '</div>';
+	$buyurl= "/item.php?item=". $row['item_code'];
 }
 
 mysqli_free_result( $result );
 mysqli_close( $link );
 ?>
 
+<div class="basic" style="margin-top:50px;text-align:center;">
+<h1 class="title"><?php echo $name?> </h1>
+<p><img class="main_img" src="<?php echo $imgurl?>"></p>
+<p><?php echo $author?> </p>
+<br>
+<p><?php echo $desc?> </p>
+
+
+<h3 align-self="right" class="title" > 
+
+<?php echo "<a href=Buy.php?item=$item_code>Buy for £";
+echo $price ;
+echo "</a>";
+ ?>
+ </h3>
+
+
+
+
+</div>
 
 
 

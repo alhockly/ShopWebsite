@@ -1,0 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css?family=Mukta+Mahee');
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html{
+	
+	font-family: 'Roboto', sans-serif;
+}
+
+.title{
+	font-family: 'Mukta Mahee', sans-serif;
+	
+}
+
+.price{
+	font-size:20px;
+	text-decoration: underline;
+    text-decoration-color: white;
+	
+	
+}
