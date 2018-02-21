@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Book page</title>
   <style>
-  @import url("/sitewide.css");
+  @import url("sitewide.css");
 	div.basic{
 		border:solid;
 		background-color:#B575A5;
@@ -73,12 +73,12 @@ li a:hover:not(.active) {
 
 
 <ul>
-  <li><a href="/index.php">Home</a></li>
-  <li><a href="/Books.php">Books</a></li>
-  <li><a href="/cds.php">CDs</a></li>
-  <li><a href="/games.php">Games</a></li>
-  <li><a href="/dvds.php">DvDs</a></li>
-  <li style="#float:right;"><a href="/login.php">Login</a></li>
+  <li><a href="index.php">Home</a></li>
+  <li><a href="Books.php">Books</a></li>
+  <li><a href="cds.php">CDs</a></li>
+  <li><a href="games.php">Games</a></li>
+  <li><a href="dvds.php">DvDs</a></li>
+  <li style="#float:right;"><a href="login.php">Login</a></li>
 </ul>
 
 
@@ -87,10 +87,16 @@ li a:hover:not(.active) {
 <?php
 
 
+	
+	
+	
+	
+
+	
 
 $item_code = $_GET[ 'item' ];
 
-#echo $item_code;
+
 # Connect to a database and access a table
 
 $dbname = 'ah17451'; # Change to your username
@@ -112,10 +118,10 @@ while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 	$name = $row['item_name'];
 	$author = $row['item_author'];
 	$desc = $row['item_description'];
-	$imgurl = '/img/'.$row['item_image_loc'];
+	$imgurl = 'img/'.$row['item_image_loc'];
 	$price = $row['item_price'];
 	
-	$buyurl= "/item.php?item=". $row['item_code'];
+	$buyurl= "item.php?item=". $item_code;
 }
 
 mysqli_free_result( $result );
@@ -123,6 +129,25 @@ mysqli_close( $link );
 ?>
 
 <div class="basic" style="margin-top:50px;text-align:center;">
+
+
+<p><?php
+
+	session_start(); 
+	
+	if ($_SESSION[ 'User' ]!=''){
+		
+		echo "<p >loggined in</p>";
+		echo $_SESSION['User'];
+		
+		
+		
+		
+		
+	}
+
+
+ echo $item_code; ?></p>
 <h1 class="title"><?php echo $name?> </h1>
 <p><img class="main_img" src="<?php echo $imgurl?>"></p>
 <p><?php echo $author?> </p>

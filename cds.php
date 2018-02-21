@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Music page</title>
   <style>
-  @import url("/sitewide.css");
+  @import url("sitewide.css");
 	div.item{
 		border:solid;
 		background-color:#B575A5;
@@ -69,12 +69,12 @@ li a:hover:not(.active) {
 
 
 <ul>
-  <li><a href="/index.php">Home</a></li>
-  <li><a href="/Books.php">Books</a></li>
+  <li><a href="index.php">Home</a></li>
+  <li><a href="Books.php">Books</a></li>
   <li><a class="active">CDs</a></li>
-  <li><a href="/games.php">Games</a></li>
-  <li><a href="/dvds.php">DvDs</a></li>
-  <li style="#float:right;"><a href="/login.php">Login</a></li>
+  <li><a href="games.php">Games</a></li>
+  <li><a href="dvds.php">DvDs</a></li>
+  <li style="#float:right;"><a href="login.php">Login</a></li>
 </ul>
 
 <div style="padding:20px;margin-top:50px;text-align:center;">
@@ -105,10 +105,10 @@ $result = mysqli_query( $link, $test_query );
 while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 {
 	
-	$url= "/item.php?item=". $row['item_code'];
+	$url= "item.php?item=". $row['item_code'];
 	#echo $url;
 	
-	$imgaddress="/img/" . $row['item_image_loc'];
+	$imgaddress="img/" . $row['item_image_loc'];
 	#echo $imgaddress;
 	
 	echo '<div class="item">';

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Book page</title>
   <style>
-  @import url("/sitewide.css");
+  @import url("sitewide.css");
 	div.item{
 		border:solid;
 		background-color:#B575A5;
@@ -69,11 +69,11 @@ li a:hover:not(.active) {
 
 
 <ul>
-  <li><a href="/index.php">Home</a></li>
-  <li><a href="/Books.php">Books</a></li>
-  <li><a href="/cds.php">CDs</a></li>
-  <li><a href="/games.php">Games</a></li>
-  <li><a href="/dvds.php">DvDs</a></li>
+  <li><a href="index.php">Home</a></li>
+  <li><a href="Books.php">Books</a></li>
+  <li><a href="cds.php">CDs</a></li>
+  <li><a href="games.php">Games</a></li>
+  <li><a href="dvds.php">DvDs</a></li>
   <li style="#float:right;"><a href="/login.php">Login</a></li>
 </ul>
 
@@ -87,18 +87,41 @@ li a:hover:not(.active) {
 	<p class="title"> Buying
 
 	<?php
-	##check login session
+		$item_code = $_GET[ 'item' ];
+		echo $item_code;
 	
-	##if no session > send to login page
-		header('Location:/login.php');
+	session_start(); 
+	
+	
+	
+	
+	if ($_SESSION[ 'User' ]!=''){
+		
+		echo "loggined in";
+		echo $_SESSION['User'];
+		
+	}
+	
+	else{
+		
+		$link = 'Location:login.php?item='.$item;
+		
+		#header($link);
+		
+		
+	}
+	
+
+	
+	
+	
 		
 	##if session > process payment with session account info
 	
 	
 	
 	
-	$item_code = $_GET[ 'item' ];
-	echo $item_code;
+	
 	# Connect to a database and access a table
 
 	$dbname = 'ah17451'; # Change to your username
@@ -112,7 +135,7 @@ li a:hover:not(.active) {
 	mysqli_select_db( $link, $dbname )
 	or die("Could not open the db '$dbname'");
 
-	$test_query = "select * from inventory";
+	$test_query = "select * from inventory where item_code=".$item_code;
 	$result = mysqli_query( $link, $test_query );
 
 	while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
