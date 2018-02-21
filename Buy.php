@@ -95,16 +95,17 @@ li a:hover:not(.active) {
 	
 	
 	
-	if ($_SESSION[ 'User' ]!=''){
+	if (session_status() == PHP_SESSION_ACTIVE){
 		
-		echo "loggined in";
+		echo "logged  in";
 		echo $_SESSION['User'];
 		
 	}
 	
 	else{
+		echo "logged in ";
 		
-		$link = 'Location:login.php?item='.$item;
+		$link = 'Location:login.php?item='.$item_code;
 		
 		#header($link);
 		
@@ -125,8 +126,8 @@ li a:hover:not(.active) {
 	# Connect to a database and access a table
 
 	$dbname = 'ah17451'; # Change to your username
-	$dbuser = 'root';
-	$dbpass = 'alex';
+	$dbuser = 'ah17451';
+	$dbpass = 'obscure';
 	$dbhost = 'localhost';
 
 	$link = mysqli_connect( $dbhost, $dbuser, $dbpass )

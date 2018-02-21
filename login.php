@@ -127,9 +127,9 @@ if ( isset( $_GET[ 'User' ] ) && isset( $_GET[ 'Pass' ] ) )
  $User = $_GET[ 'User' ];
  echo $User;
  $Pass = $_GET[ 'Pass' ];
- $dbname = 'ah17451'; # Change to your User
- $dbuser = 'root';
- $dbpass = 'alex';
+ $dbname = 'ah17451'; # Change to your username
+ $dbuser = 'ah17451';
+ $dbpass = 'obscure';
  $dbhost = 'localhost';
  $link = mysqli_connect( $dbhost, $dbuser, $dbpass )
  or die( "Unable to Connect to '$dbhost'" );

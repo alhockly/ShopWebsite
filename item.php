@@ -100,8 +100,8 @@ $item_code = $_GET[ 'item' ];
 # Connect to a database and access a table
 
 $dbname = 'ah17451'; # Change to your username
-$dbuser = 'root';
-$dbpass = 'alex';
+$dbuser = 'ah17451';
+$dbpass = 'obscure';
 $dbhost = 'localhost';
 
 $link = mysqli_connect( $dbhost, $dbuser, $dbpass )
@@ -139,7 +139,6 @@ mysqli_close( $link );
 		
 		echo "<p >loggined in</p>";
 		echo $_SESSION['User'];
-		
 		
 		
 		
