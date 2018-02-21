@@ -67,25 +67,21 @@ li a:hover:not(.active) {
 <body>
 
 
-
-<ul>
-  <li><a href="index.php">Home</a></li>
-  <li><a href="Books.php">Books</a></li>
-  <li><a href="cds.php">CDs</a></li>
-  <li><a class="active" >Games</a></li>
-  <li><a href="dvds.php">DvDs</a></li>
-  <li style="#float:right;"><a href="/login.php">Login</a></li>
-</ul>
+<?php include ( "menu.php"); ?>
 
 <div style="padding:20px;margin-top:50px;text-align:center;">
 
-	<h1 class="title" >Welcome to the Games section</h1>
+	<h1 class="title">Welcome to the Games section</h1>
     	
    
 </div>
 
 
 <?php
+
+
+
+
 # Connect to a database and access a table
 
 $dbname = 'ah17451'; # Change to your username
@@ -124,6 +120,12 @@ while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 
 mysqli_free_result( $result );
 mysqli_close( $link );
+
+
+$login_bool = require( "checklogin.php"); 
+
+
+echo $login_bool;
 ?>
 
 

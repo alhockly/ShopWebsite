@@ -6,14 +6,7 @@
   <style>
   @import url("sitewide.css");
   
-	div.item{
-		border:solid;
-		background-color:#B575A5;
-		padding:20px;
-		display:block;
-		margin:10px;
-		height:100px;
-	}
+
   
   body {
 	  margin:0;
@@ -69,14 +62,7 @@ li a:hover:not(.active) {
 
 
 
-<ul>
-  <li><a href="index.php">Home</a></li>
-  <li><a href="Books.php">Books</a></li>
-  <li><a href="cds.php">CDs</a></li>
-  <li><a href="games.php">Games</a></li>
-  <li><a class="active">DvDs</a></li>
-  <li style="#float:right;"><a href="login.php">Login</a></li>
-</ul>
+<?php include ( "menu.php"); ?>
 
 <div style="padding:20px;margin-top:50px;text-align:center;">
 

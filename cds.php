@@ -20,39 +20,7 @@
   
   }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 15;
-	padding-right:13;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-	align-self:center;
-	
-}
 
-li {
-   float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #BCBCBC;
-}
-
-.active {
-    background-color: #703C63;
-}
   
  .itemimg{
 	 height:100%;
@@ -66,16 +34,8 @@ li a:hover:not(.active) {
 </head>
 <body>
 
+<?php include ( "menu.php"); ?>
 
-
-<ul>
-  <li><a href="index.php">Home</a></li>
-  <li><a href="Books.php">Books</a></li>
-  <li><a class="active">CDs</a></li>
-  <li><a href="games.php">Games</a></li>
-  <li><a href="dvds.php">DvDs</a></li>
-  <li style="#float:right;"><a href="login.php">Login</a></li>
-</ul>
 
 <div style="padding:20px;margin-top:50px;text-align:center;">
 

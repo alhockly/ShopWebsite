@@ -74,15 +74,12 @@ li a:hover:not(.active) {
 
 
 
+<?php include ( "menu.php"); 
+	$item =  $_GET['item'];
 
-<ul>
-  <li><a href="index.php">Home</a></li>
-  <li><a href="Books.php">Books</a></li>
-  <li><a href="cds.php">CDs</a></li>
-  <li><a href="games.php" >Games</a></li>
-  <li><a href="dvds.php">DvDs</a></li>
-  <li style="#float:right;" class="active"><a href="#login">Login</a></li>
-</ul>
+?>
+
+
 
 <div style="padding:20px;margin-top:50px;text-align:center;">
 
@@ -94,8 +91,11 @@ li a:hover:not(.active) {
 
 
 <div class="login" style="text-align:center;float:center;text-align:center;">
-<div style="center;">	
-	<form>
+<div style="center;">
+	
+	
+	
+	<form >
 	<h1 >User</h1>
 	<br>
 	<input class="loginform" type="text" name="User" value="">
@@ -103,6 +103,7 @@ li a:hover:not(.active) {
 	<h1 >Pass</h1>
 	<input class="loginform" type="text" name="Pass" value="">
 	<br>
+	<input type="hidden" name="item" value="<?php echo $item;?>">
 	 <input type="submit" value="Log on" style="margin-top:10px;">
     
 	</form>
@@ -115,7 +116,7 @@ li a:hover:not(.active) {
 
 
 $item =  $_GET['item'];
-echo $item;
+#echo $item;
 
 
 session_start();
@@ -125,7 +126,7 @@ session_destroy();
 if ( isset( $_GET[ 'User' ] ) && isset( $_GET[ 'Pass' ] ) )
 {
  $User = $_GET[ 'User' ];
- echo $User;
+ #echo $User;
  $Pass = $_GET[ 'Pass' ];
  $dbname = 'ah17451'; # Change to your username
  $dbuser = 'ah17451';
@@ -143,17 +144,31 @@ if ( isset( $_GET[ 'User' ] ) && isset( $_GET[ 'Pass' ] ) )
 if ( mysqli_num_rows( $result ) == 1 ) # Number of result rows
  {
 	echo "success";
+	
+	
  session_start();
  $_SESSION[ 'User' ] = $User;
+ $_SESSION['item'] = $item;
  
- header( 'Location: buy.php?item='.$item );
+ if ($item==''){
+	
+	header( 'Location: index.php' );
+ 
+ }
+ 
+ else{
+	 
+	 
+	 header( 'Location: buy.php?item='.$item );
+ }
+ 
+ 
  exit();
  }
  else
  {
  echo '<p>Login failed. Please try again.</p>', "\n";
- echo '<p>Number of result rows is ', mysqli_num_rows( $result ),
- '</p>';
+
  }
 }
 ?> 
@@ -162,9 +177,7 @@ if ( mysqli_num_rows( $result ) == 1 ) # Number of result rows
 </div>
 
 
-<?php
-##LOGIN CODE
-?>
+
 
 
 

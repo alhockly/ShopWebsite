@@ -72,16 +72,9 @@ li a:hover:not(.active) {
 
 
 
-<ul>
-  <li><a href="index.php">Home</a></li>
-  <li><a href="Books.php">Books</a></li>
-  <li><a href="cds.php">CDs</a></li>
-  <li><a href="games.php">Games</a></li>
-  <li><a href="dvds.php">DvDs</a></li>
-  <li style="#float:right;"><a href="login.php">Login</a></li>
-</ul>
+<?php include ( "menu.php"); ?>
 
-
+<?php $login_bool = require( "checklogin.php"); ?>
 
 
 <?php
@@ -120,6 +113,7 @@ while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 	$desc = $row['item_description'];
 	$imgurl = 'img/'.$row['item_image_loc'];
 	$price = $row['item_price'];
+	$stock = $row['item_stock_count'];
 	
 	$buyurl= "item.php?item=". $item_code;
 }
@@ -131,22 +125,8 @@ mysqli_close( $link );
 <div class="basic" style="margin-top:50px;text-align:center;">
 
 
-<p><?php
-
-	session_start(); 
-	
-	if ($_SESSION[ 'User' ]!=''){
-		
-		echo "<p >loggined in</p>";
-		echo $_SESSION['User'];
-		
-		
-		
-		
-	}
 
 
- echo $item_code; ?></p>
 <h1 class="title"><?php echo $name?> </h1>
 <p><img class="main_img" src="<?php echo $imgurl?>"></p>
 <p><?php echo $author?> </p>
@@ -156,12 +136,35 @@ mysqli_close( $link );
 
 <h3 align-self="right" class="title" > 
 
-<?php echo "<a href=Buy.php?item=$item_code>Buy for £";
-echo $price ;
-echo "</a>";
+<?php
+
+if ($stock !=0){
+	
+	if ($login_bool=="1"){
+		echo "<a href=Buy.php?item=$item_code>Buy for £";
+		echo $price ;
+		echo "</a>";
+	}
+	else{
+		echo "<a href=login.php?item=$item_code>Log in and Buy for £";
+		echo $price ;
+		echo "</a>";
+		
+	}
+}
+else{
+	
+	echo "Not in stock :(";
+	
+	
+}
+
  ?>
  </h3>
 
+ <p>
+<?php echo $stock; ?> left!
+</p>
 
 
 

@@ -13,10 +13,53 @@ html{
 	
 }
 
+div.item{
+	border:solid;
+	background-color:#B575A5;
+	padding:20px;
+	display:block;
+	margin:10px 40px;
+	height:100px;
+}
+
 .price{
 	font-size:20px;
 	text-decoration: underline;
     text-decoration-color: white;
 	
 	
+}
+
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 15;
+	padding-right:13;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+	align-self:center;
+	
+}
+
+li {
+   float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #BCBCBC;
+}
+
+.active {
+    background-color: #703C63;
 }
