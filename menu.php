@@ -25,8 +25,14 @@ echo "<li><a href=\"dvds.php\">DVDs</a></li>";
 if ($login_bool=="1"){
 	
 	session_start(); 
-		echo "<li class=\"name\">".$_SESSION['name']."</li>";
-	# echo $_SESSION['User'];
+		if($_SESSION['name']=="Manager")
+		{
+			echo "<li class=\"name\" style=\"background-color: #55ed0d;\">".$_SESSION['name']."</li>";
+		}
+		else{
+			echo "<li class=\"name\" style=\"background-color: #b50061;\">".$_SESSION['name']."</li>";
+		
+		}
 	
 }
 
