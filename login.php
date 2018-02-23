@@ -12,6 +12,7 @@
 		display:block;
 		margin:0px 500px;
 		height:20%;
+		#display: inline-block
 	}
 .loginform{
 	
@@ -72,7 +73,7 @@ li a:hover:not(.active) {
 
 
 
-
+<?php include ( "destroy_session.php"); ?>
 
 <?php include ( "menu.php"); 
 	$item =  $_GET['item'];
@@ -119,10 +120,6 @@ $item =  $_GET['item'];
 #echo $item;
 
 
-session_start();
-$_SESSION = array();
-session_destroy(); 
-
 if ( isset( $_GET[ 'User' ] ) && isset( $_GET[ 'Pass' ] ) )
 {
  $User = $_GET[ 'User' ];
@@ -137,7 +134,7 @@ if ( isset( $_GET[ 'User' ] ) && isset( $_GET[ 'Pass' ] ) )
  mysqli_select_db( $link, $dbname )
  or die("Could not open the db '$dbname'");
 
- $Pass_query = "select * from customer where firstname = '" .
+ $Pass_query = "select * from customer where customer_number = '" .
  $User . "' and passwd = MD5( '" . $Pass . "' )";
  $result = mysqli_query( $link, $Pass_query );
  
@@ -149,6 +146,7 @@ if ( mysqli_num_rows( $result ) == 1 ) # Number of result rows
  session_start();
  $_SESSION[ 'User' ] = $User;
  $_SESSION['item'] = $item;
+ $_SESSION['name'] = "name";
  
  if ($item==''){
 	
@@ -159,7 +157,7 @@ if ( mysqli_num_rows( $result ) == 1 ) # Number of result rows
  else{
 	 
 	 
-	 header( 'Location: buy.php?item='.$item );
+	header( 'Location: buy.php?item='.$item );
  }
  
  
@@ -167,8 +165,31 @@ if ( mysqli_num_rows( $result ) == 1 ) # Number of result rows
  }
  else
  {
- echo '<p>Login failed. Please try again.</p>', "\n";
 
+
+ 
+ $Pass_query = "select * from manager where manager_number = '" . $User . "' and passwd = MD5( '" . $Pass . "' )";
+ $result = mysqli_query( $link, $Pass_query );
+ 
+if ( mysqli_num_rows( $result ) == 1 ) # Number of result rows
+ {
+	echo "success as manager!!!";
+	session_start();
+	$_SESSION[ 'User' ] = $User;
+	$_SESSION['name'] = "Manager";
+	header( 'Location: index.php' );
+ }
+ 
+ else{
+	 
+	  echo '<p>Login failed. Please try again.</p>', "\n";
+	 
+ }
+ 
+ 
+ 
+ 
+ 
  }
 }
 ?> 

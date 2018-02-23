@@ -1,0 +1,15 @@
+CREATE TABLE customer (
+  customer_number INT NOT NULL AUTO_INCREMENT,
+  surname VARCHAR(40),
+  initials VARCHAR(10),
+  firstname VARCHAR(40),
+  title ENUM('Mr', 'Mrs', 'Miss', 'Ms', 'Dr', 'Prof', 'Rev'),
+  address1 VARCHAR(60),
+  address2 VARCHAR(60),
+  city VARCHAR(30),
+  county VARCHAR(30),
+  postcode VARCHAR(8),
+  passwd VARCHAR(128),
+  passphrase VARCHAR(128),
+  PRIMARY KEY(customer_number)
+);

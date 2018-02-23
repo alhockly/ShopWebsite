@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Book page</title>
+  <title>Music page</title>
   <style>
   @import url("sitewide.css");
 	div.item{
@@ -25,7 +25,7 @@
  .itemimg{
 	 height:100%;
 	
-	 #padding-right: 20px;
+	 padding-right: 20px;
 	 
  }
   
@@ -34,15 +34,12 @@
 </head>
 <body>
 
-
 <?php include ( "menu.php"); ?>
 
 
- 
-
 <div style="padding:20px;margin-top:50px;text-align:center;">
 
-	<h1 class="title">Welcome to the book section</h1>
+	<h1 class="title">RESET PAGE</h1>
     	
    
 </div>
@@ -62,29 +59,10 @@ or die( "Unable to Connect to '$dbhost'" );
 mysqli_select_db( $link, $dbname )
 or die("Could not open the db '$dbname'");
 
-$test_query = "select * from inventory where item_group=1001";
-$result = mysqli_query( $link, $test_query );
+$query = "select * from inventory where item_group=1002";
+$result = mysqli_query( $link, $query );
 
-while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
-{
-	
-	$url= "item.php?item=". $row['item_code'];
-	#echo $url;
-	
-	$imgaddress="img/" . $row['item_image_loc'];
-	#echo $imgaddress;
-	
-	echo '<div class="item">';
-	echo "<a href='$url'>";
-	
-	
- 
-	echo "<img class='itemimg'  src=$imgaddress align='left'>";
-	echo "<h3 style='margin-left:80px;'>",$row[ 'item_name' ], '</h3>';
-	echo "<p style='margin-left:80px;'>",$row[ 'item_author' ],"</p> </a>";
-	echo '<p align="right" class="price" ><b >£', $row[ 'item_price' ],'</b><br></p>',"<br />\n";
-	echo '</div>';
-}
+
 
 mysqli_free_result( $result );
 mysqli_close( $link );

@@ -6,54 +6,39 @@
   
 </style>
 <?php
+
 $login_bool = include("checklogin.php");
 
 
+echo "<ul class=\"menu\">";
+
+echo "<li><a href=\"index.php\">Home</a></li>";
+
+echo "<li><a href=\"books.php\">Books</a></li>";
+
+echo "<li><a href=\"cds.php\">CDs</a></li>";
+
+echo "<li><a href=\"games.php\">Games</a></li>";
+
+echo "<li><a href=\"dvds.php\">DVDs</a></li>";
+
+if ($login_bool=="1"){
+	
+	session_start(); 
+		echo "<li class=\"name\">".$_SESSION['name']."</li>";
+	# echo $_SESSION['User'];
+	
+}
 
 
-echo "<ul class=";
-echo "menu";
-
-echo "> <li><a href=";
-
-echo "index.php";
-
-echo ">Home</a></li><li>";
-
-echo"<a href=";
-echo "books.php";
-
-  
-echo  ">Books</a></li><li><a href=";
-
-echo "cds.php";
-  
-echo ">CDs</a></li><li><a href=";
-
-echo "games.php";
-
-echo ">Games</a></li><li><a href=";
-
-echo "dvds.php";
-echo ">DVDs</a></li>";
-
-echo "<li";
-
-
-
+##Login 
+echo "<li style=\"float:right;padding-right:50px; ";
 
    if ($login_bool=="1"){
-	   echo " style='background-color: #f3903f';"; 
+	   echo "background-color: #f3903f;"; 
    }
-
-
  
-echo "><a href=";
- 
-echo "login.php";
-
-
-echo ">";
+echo "\"><a href=\"login.php\">";
 
 	 if ($login_bool=="1"){
 	   echo "log out"; 
@@ -63,7 +48,9 @@ echo ">";
 		
 	}
 
-echo "</a></li></ul>";
+echo "</a></li>";
+
+echo "</ul>";
 
 
 

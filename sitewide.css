@@ -14,6 +14,7 @@ html{
 }
 
 div.item{
+	border-radius: 5px;
 	border:solid;
 	background-color:#B575A5;
 	padding:20px;
@@ -55,6 +56,15 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
+
+li.name {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
 
 li a:hover {
     background-color: #BCBCBC;
