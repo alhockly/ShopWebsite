@@ -70,6 +70,8 @@ li a:hover:not(.active) {
 
 <?php include ( "menu.php"); ?>
 
+
+
 <div style="padding:20px;margin-top:50px;text-align:center;">
 
     	
@@ -77,11 +79,13 @@ li a:hover:not(.active) {
 
 
 
-	<p class="title"> Buying
+	
 
 	<?php
 		$item_code = $_GET[ 'item' ];
-		echo $item_code;
+		#echo $item_code;
+	
+		$buy_url = "confirmedbuy.php?item=".$item_code;
 	
 		$login_bool = require( "checklogin.php"); 
 
@@ -102,7 +106,7 @@ li a:hover:not(.active) {
 				mysqli_select_db( $link, $dbname )
 				or die("Could not open the db '$dbname'");
 			
-				###EDIT DB TO BUY ITEM
+			
 				
 				$query = "select * from inventory where item_code='$item_code'";
 				$result = mysqli_query( $link, $query );
@@ -119,7 +123,9 @@ li a:hover:not(.active) {
 					$buyurl= "item.php?item=". $item_code;
 				}
 				
-				
+				if($stock <=0){
+					header ("location: item.php?item=".$item_code);
+				}
 			
 				mysqli_free_result( $result );
 				mysqli_close( $link );
@@ -140,14 +146,19 @@ li a:hover:not(.active) {
 
 	?>
 
-	</p>
+	<p class="title"> Buying <?php echo $name." for £".$price; ?></p>
 	
-	<p>
-		<?php echo $name; ?>
+	<p>Enter promo code:</p>
 	
-	</p>
+	<form action="confirmedbuy.php">
+	<input type="text" name="promo" value="" >
 	
-	<p><a href="recipt?item=<?php echo $item_code;?>" >CONFIRM</a></p>
+	<input type="hidden" name="item" value="<?php echo $item_code;?>">
+	<br>
+		<input type="submit" value="Complete Purchase" style="margin-top:10px;">
+	</form>
+	
+	
 	
 	
 	

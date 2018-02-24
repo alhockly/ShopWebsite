@@ -13,6 +13,8 @@ html{
 	
 }
 
+
+
 div.item{
 	border-radius: 5px;
 	border:solid;
@@ -22,6 +24,17 @@ div.item{
 	margin:10px 40px;
 	height:100px;
 }
+
+div.homeitem{
+	border-radius: 5px;
+	border:solid;
+	background-color:#B575A5;
+	padding:20px;
+	display:inline-block;
+	margin:10px;
+	width:20%;
+	height:60%;
+	}
 
 .price{
 	font-size:20px;

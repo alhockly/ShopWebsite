@@ -12,15 +12,15 @@ $login_bool = include("checklogin.php");
 
 echo "<ul class=\"menu\">";
 
-echo "<li><a href=\"index.php\">Home</a></li>";
+echo "<li class=\"menu\"><a href=\"index.php\">Home</a></li>";
 
-echo "<li><a href=\"books.php\">Books</a></li>";
+echo "<li class=\"menu\"><a href=\"books.php\">Books</a></li>";
 
-echo "<li><a href=\"cds.php\">CDs</a></li>";
+echo "<li class=\"menu\"><a href=\"cds.php\">CDs</a></li>";
 
-echo "<li><a href=\"games.php\">Games</a></li>";
+echo "<li class=\"menu\"><a href=\"games.php\">Games</a></li>";
 
-echo "<li><a href=\"dvds.php\">DVDs</a></li>";
+echo "<li class=\"menu\"><a href=\"dvds.php\">DVDs</a></li>";
 
 if ($login_bool=="1"){
 	
@@ -28,17 +28,22 @@ if ($login_bool=="1"){
 		if($_SESSION['name']=="Manager")
 		{
 			echo "<li class=\"name\" style=\"background-color: #55ed0d;\">".$_SESSION['name']."</li>";
+			
+			echo "<li class=\"menu\" style=\"background-color: #55ed0d;\"><a href=\"stats.php\">Stats for managers</a></li>";
+			
 		}
 		else{
-			echo "<li class=\"name\" style=\"background-color: #b50061;\">".$_SESSION['name']."</li>";
+			echo "<li class=\"name\" style=\"background-color: #b50061;\">Hi, ".$_SESSION['name']."</li>";
 		
 		}
 	
 }
 
+echo "<li><form action=\"search.php\"><input type=\"text\" name=\"search\" value=\"\"></form></li>";
+
 
 ##Login 
-echo "<li style=\"float:right;padding-right:50px; ";
+echo "<li class=\"menu\" style=\"float:right;padding-right:50px; ";
 
    if ($login_bool=="1"){
 	   echo "background-color: #f3903f;"; 

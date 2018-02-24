@@ -14,30 +14,44 @@
   
   }
 
-ul {
+
+
+ul.sidemenu {
     list-style-type: none;
     margin: 0;
-    padding: 15;
-	padding-right:13;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-	align-self:center;
+    padding-top: 15px;
+    width: 20px;
+    background-color: #f1f1f1;
+	height:100%;
+	position: fixed;
+}
+
+
+
+
+div.sidemenu{
+	#display: block;
+    color: #000;	
+    #padding: 8px 16px;
+    text-decoration: none;
+	width:20;
+	width:30px;
+	height:25%;
+	
 	
 }
 
-li {
-   float: left;
-}
 
-li a {
+
+li.menuside {
+	padding-top:20px;
     display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
+    color: #000;
+    padding: 8px 16px;
+    text-align: left;
+    #padding: 14px 16px;
     text-decoration: none;
+	margin:0px;
 }
 
 li a:hover:not(.active) {
@@ -63,6 +77,16 @@ li a:hover:not(.active) {
 
 
 <?php include ( "menu.php"); ?>
+
+<div style="margin:0px;">
+<ul class="sidemenu">
+  <li class="sidemenu"><div class="sidemenu" style="background-color:#56d9ec;"><a href="#home">A</a></div></li>
+  <li class="sidemenu"><div class="sidemenu"><a href="#news">B</a></li>
+  <li class="sidemenu"><div class="sidemenu"><a href="#contact">C</a></li>
+ 
+</ul>
+</div>
+
 
 <div style="padding:20px;margin-top:50px;text-align:center;">
 

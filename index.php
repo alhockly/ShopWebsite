@@ -5,14 +5,9 @@
   <title>Home</title>
   <style>
   @import url("sitewide.css");
-	div.item{
-		border:solid;
-		background-color:#B575A5;
-		padding:20px;
-		display:block;
-		margin:10px;
-		height:100px;
-	}
+
+	
+
   
   body {
 	  margin:0;
@@ -28,6 +23,13 @@
 	 padding-right: 20px;
 	 
  }
+  
+  
+  .img{
+	  
+	  height:30%;
+	  
+  }
   
   </style>
   
@@ -47,7 +49,7 @@
    
 </div>
 
-</p> Editor's Picks</p>
+<h2> Editor's Picks<br></h2>
 <?php
 # Connect to a database and access a table
 
@@ -62,52 +64,64 @@ or die( "Unable to Connect to '$dbhost'" );
 mysqli_select_db( $link, $dbname )
 or die("Could not open the db '$dbname'");
 
+$a=array();
+
+
+
 $x=0;
-while($x<4){
-$randnum=rand(10,24);
+while($x<8){
+		
+$randnum=rand(1,24);
+
+while (True){
+	if (in_array($randnum,$a)){
+		$randnum = rand(1,24);
+	}
+	else{
+		break;
+	}
+}
+array_push($a,$randnum);
+
+if ($randnum<10){
+	$query = "select * from inventory where item_code=\"AA01-00".$randnum.'"';
+	
+}
+else{
+	
+	$query = "select * from inventory where item_code=\"AA01-0".$randnum.'"';
+}
 
 
-$query = "select * from inventory where item_code=AA01-0".$randnum;
-
-echo $query."<br>";
+#echo $query."<br>";
 
 $result = mysqli_query( $link, $query );
 
-echo $result['item_name'];
-
+	$row = mysqli_fetch_array($result);
+	$name = $row['item_name'];
+	$imgaddress="img/" . $row['item_image_loc'];
+	
+	
+	echo "<div class=\"homeitem\">";
+	#echo $query."<br>";
+	echo "<h2 style=\"text-align: center;\">".$name."</h2>";
+	echo "<img src=\"".$imgaddress."\" style=\"width:100%;\">";
+	echo "</div>";
 
 $x= $x+1;
 }
 
 
 
-while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
-{
-	
-	$url= "item.php?item=". $row['item_code'];
-	echo $url;
-
-	
-	$imgaddress="img/" . $row['item_image_loc'];
-	#echo $imgaddress;
-	
-	echo '<div class="item">';
-	echo "<a href='$url'>";
-	
-	
- 
-	echo "<img class='itemimg'  src=$imgaddress align='left'>";
-	echo "<h3>",$row[ 'item_name' ], '</h3>';
-	echo $row[ 'item_author' ], ' <br></a><div align="right" class="price"><b>£', $row[ 'item_price' ],'</b></div>',"<br />\n";
-	echo '</div>';
-}
 
 mysqli_free_result( $result );
 mysqli_close( $link );
 ?>
 
 
-
+<?php
+	echo var_dump($a);
+?>
 
 </body>
 </html>

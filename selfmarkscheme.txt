@@ -1,0 +1,138 @@
+CE154 Assignment Marking Scheme 2017-18
+---------------------------------------
+
+Section 1: Layout and CSS
+
+[ ] 05  1. The site has menus across the top and down the side.
+[X] 05  2. There are consistent menus across all pages of the site.
+[X] 05  3. CSS has been used for the layout.
+[ ] 05  4. The HTML of the pages validates as HTML5:
+           https://validator.w3.org/nu/
+[ ] 05  5. The CSS of the pages validates: http://jigsaw.w3.org/css-validator/
+           (HTML/CSS validation also directly available through Chrome)
+
+Section 2: Structure and Merchandise
+
+[X] 05  6. The site has a home page, a user login page, a manager login page and
+           one page each for Books, CDs, Games and DVDs.
+[X] 05  7. There are at least six items for sale in each category, i.e. Books,
+           Music, Games and DVDs, each shown with a unique item code, a short
+           description, an image, a price and a number in stock.
+[X] 05  8. Each item for sale has a different picture which relates specifically
+           to the item.
+[X] 05  9. The database tables are used dynamically to create the pages of items
+           for sale on the website. In other words, the items are not hard coded
+           in an HTML page; instead, the HTML page is created dynamically from
+           a .php page by consulting the database whenever that .php is loaded.
+
+Section 3: Customer Logon and Purchase
+
+[X] 05 10. The user can log in to the site and log off again using their
+           customer_number and passwd from the customer table in the database.
+           Specifically, user 1001 can log in with password 'mollie' and this is
+           checked by searching the database.
+[X] 05 11. There is Javascript validation of login information. It should check
+           that username is a number and that the password submitted is not
+           null.
+[X] 05 12. The user can 'purchase' an item which is for sale, but only when
+           logged in. No 'shopping cart' or payment needed, just click on a
+           button called 'Buy' which is next to an item. We will then go to a
+           purchase page. The user can then click 'Complete Purchase' whereupon
+           the item is purchased immediately as long as the user is logged
+           in. Otherwise, it can say 'not logged in' or similar. The value
+           field of the order_item is the same as the item_price for the item
+           in the inventory, unless there is a discount (see below).
+[X] 05 13. On the purchase page there is a box to enter a promotional code. If
+           the user enters a code in the box, it is looked up in the
+           promotion_code table and the appropriate discount applied
+           when 'Complete Purchase' is clicked. A discount of 10 means the cost
+           is reduced by 10%. Invalid codes do not result in
+           a discount! This feature will be verified by looking at the value
+           field for the order_item created when the item is purchased.
+[X] 05 14. Stock goes down when an item is purchased. This will be verified by a
+           customer making a purchase and observing if the stock count goes
+           down. 
+[X] 05 15. An item which is out of stock may not be purchased. This will be
+           verified by a customer clicking Buy against an item which shows a
+           stock count of zero. The system should give an error message and not
+           purchase the item for the customer.
+
+Section 6: Customer Review and Search
+
+[ ] 05 16. Next to an item for sale is a Review button. If a logged-on user
+           clicks that button they can enter a simple 1-5 integer
+           rating using radio buttons. The review rating is recorded in
+           the 'review' database table, which can be viewed from the manager
+           page.
+[X] 05 17. There is a search box at the top of the screen. If a string is
+           entered, this will display all items in the database (of whatever
+           type) which contain the entered string in their item description
+           field. For example, if you enter "playing", the album Netsky will be
+           displayed.
+
+Section 4: Manager Logon and Review
+
+[X] 05 18. The manager can log on to the site. Specifically, manager_number 100
+           can log in with passwd 'luigia', and this is checked in the database.
+[X] 05 19. The manager can view the contents of all the database tables but only
+           when logged in.
+[ ] 05 20. For a new order, a delivery date three days in the future is recorded
+           in the database. This will be checked by ordering an item and then
+           from the manager page looking for one new entry in the customer_order
+           table and one new entry in the order_item table. (We assume a
+           customer always orders one item only and there is one customer_order
+           and one order_item for that item.)
+
+Marks
+-----
+
+
+
+Comments
+--------
+
+
+
+Explanation of the marking scheme
+---------------------------------
+
+Consider the line:
+
+[ ] 05 18. The manager can log on to the site.
+
+We will check your website on the server to see whether it includes this
+facility. If so, you will receive 5%. If we cannot verify that it works, then
+you will not get the marks.
+
+Other important points
+----------------------
+
+NB: Your website *must* include a button on the homepage marked 'Reset DBase'
+which when pressed calls reset.php which re-sets the database on the server to
+its original form. We will run this before we begin assessing your site.
+Remember, we have supplied such a script but you need to include additional
+lines to generate the data for the eight new items you are going to add
+(i.e. two books, two CDs, two Games and two DVDs) so that there are six items
+in each category in total. Also, make sure the script can be run from your site
+when it is on the server.
+
+After re-setting the database, all the original tables must be present and each
+table must include exactly the original rows of data, plus your new rows as
+above.
+
+You *must* use PHP and Apache httpd for your website, exactly as done in the
+labs. You may not use JSP, ASP etc. You may not use jQuery, Ajax or any other
+third party libraries except those explicitly covered in the lab sheets and
+taught in the lectures. You may not use any frameworks. All code must be your
+own work, typed in by you personally, but you may use code from the examples
+given in the lectures and labs. You may not use Dreamweaver or any similar
+software for any part of the assignment.
+
+We may call you for interview before the end of term to answer detailed
+questions about your assignment. We will contact you if this is necessary.
+
+You must upload the .zip of your assignment to the Faser system by the
+deadline. The .zip file should be the contents of m:\apache24\htdocs. No Faser
+upload will mean no marks, so be sure to upload to Faser!  However, the marks
+you get will be entirely dependent on what is working on csee5. Nothing working
+on csee5 will mean no marks.

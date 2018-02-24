@@ -57,7 +57,7 @@ CREATE TABLE customer_order (
   shipping_date DATETIME, 
   customer_number INT NOT NULL,
   PRIMARY KEY(order_number),
-  FOREIGN KEY(customer_number) REFERENCES customer(customer_number) ON DELETE CASCADE
+  FOREIGN KEY(customer_number) REFERENCES customer(customer_number)
 );  
   
 -- Create order_item Table
@@ -84,7 +84,7 @@ CREATE TABLE manager (
 
 -- Create review table
 CREATE TABLE review (
-  review_number INT NOT NULL AUTO_INCREMENT,
+  review_number INT NOT NULL AUTO_INCREMENT,	
   customer_number INT,
   item_code CHAR(8),
   rating INT NOT NULL DEFAULT 3,

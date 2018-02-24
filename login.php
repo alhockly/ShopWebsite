@@ -68,6 +68,23 @@ li a:hover:not(.active) {
   
   </style>
   
+  <script>
+function validateForm() {
+    var user = document.forms["loginform"]["User"].value;
+    
+	if (isNaN(user)) {
+        alert("User name must be a number");
+        return false;
+		
+		
+    }
+	else{
+		
+		return true;
+	}
+}
+</script>
+  
 </head>
 <body>
 
@@ -85,7 +102,7 @@ li a:hover:not(.active) {
 <div style="padding:20px;margin-top:50px;text-align:center;">
 
 	<h1 class="title">Log on Page</h1>
-    	
+    	<p>This page also works for the manager but if you want a seperate page then click <a href="login2.php">here</a></p>
    
 </div>
 
@@ -96,13 +113,13 @@ li a:hover:not(.active) {
 	
 	
 	
-	<form >
+	<form name="loginform" onsubmit="return validateForm()">
 	<h1 >User</h1>
 	<br>
-	<input class="loginform" type="text" name="User" value="">
+	<input class="loginform" type="text" name="User" value="" required>
 	<br>
 	<h1 >Pass</h1>
-	<input class="loginform" type="text" name="Pass" value="">
+	<input class="loginform" type="text" name="Pass" value="" required>
 	<br>
 	<input type="hidden" name="item" value="<?php echo $item;?>">
 	 <input type="submit" value="Log on" style="margin-top:10px;">
@@ -142,11 +159,13 @@ if ( mysqli_num_rows( $result ) == 1 ) # Number of result rows
  {
 	echo "success";
 	
+	$row_cnt = mysqli_fetch_array($result);
+	$name = $row_cnt['firstname'];
 	
  session_start();
  $_SESSION[ 'User' ] = $User;
  $_SESSION['item'] = $item;
- $_SESSION['name'] = "name";
+ $_SESSION['name'] = $name;
  
  if ($item==''){
 	
