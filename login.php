@@ -19,52 +19,6 @@
 	align:left;
 }
   
-  body {
-	  margin:0;
-	background-color:#703C63;
-  
-  }
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 15;
-	padding-right:13;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-	align-self:center;
-	
-}
-
-li {
-   float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #BCBCBC;
-}
-
-.active {
-    background-color: #703C63;
-}
-  
- .itemimg{
-	 height:100%;
-	
-	 padding-right: 20px;
-	 
- }
   
   </style>
   
@@ -94,12 +48,12 @@ function validateForm() {
 
 <?php include ( "menu.php"); 
 	$item =  $_GET['item'];
-
+	include ( "sidemenu.php")
 ?>
 
+<div class="title"></div>
 
-
-<div style="padding:20px;margin-top:50px;text-align:center;">
+<div style="padding:70px;text-align:center;">
 
 	<h1 class="title">Log on Page</h1>
     	<p>This page also works for the manager but if you want a seperate page then click <a href="login2.php">here</a></p>

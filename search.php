@@ -5,29 +5,7 @@
   <title>Search</title>
   <style>
   @import url("sitewide.css");
-	div.item{
-		border:solid;
-		background-color:#B575A5;
-		padding:20px;
-		display:block;
-		margin:10px;
-		height:100px;
-	}
-  
-  body {
-	  margin:0;
-	background-color:#703C63;
-  
-  }
 
-
-  
- .itemimg{
-	 height:100%;
-	
-	 #padding-right: 20px;
-	 
- }
   
   </style>
   
@@ -37,12 +15,12 @@
 
 <?php include ( "menu.php"); ?>
 
-
+<?php include ( "sidemenu.php"); ?>
  
 
-<div style="padding:20px;margin-top:50px;text-align:center;">
+<div class="title">
 
-	<h1 class="title">Search results</h1>
+	<h1 class="title">Search Results</h1>
     	
    
 </div>
@@ -82,9 +60,8 @@ while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 	
  
 	echo "<img class='itemimg'  src=$imgaddress align='left'>";
-	echo "<h3 style='margin-left:80px;'>",$row[ 'item_name' ], '</h3>';
-	echo "<p style='margin-left:80px;'>",$row[ 'item_author' ],"</p> </a>";
-	echo '<p align="right" class="price" ><b >£', $row[ 'item_price' ],'</b><br></p>',"<br />\n";
+	echo "<h3>",$row[ 'item_name' ], '</h3>';
+	echo $row[ 'item_author' ], ' <br></a><div align="right" class="price"><b>£', $row[ 'item_price' ],'</b></div>',"<br />\n";
 	echo '</div>';
 }
 

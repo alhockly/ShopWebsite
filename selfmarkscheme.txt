@@ -3,7 +3,7 @@ CE154 Assignment Marking Scheme 2017-18
 
 Section 1: Layout and CSS
 
-[ ] 05  1. The site has menus across the top and down the side.
+[X] 05  1. The site has menus across the top and down the side.
 [X] 05  2. There are consistent menus across all pages of the site.
 [X] 05  3. CSS has been used for the layout.
 [ ] 05  4. The HTML of the pages validates as HTML5:
@@ -76,7 +76,7 @@ Section 4: Manager Logon and Review
            can log in with passwd 'luigia', and this is checked in the database.
 [X] 05 19. The manager can view the contents of all the database tables but only
            when logged in.
-[ ] 05 20. For a new order, a delivery date three days in the future is recorded
+[X] 05 20. For a new order, a delivery date three days in the future is recorded
            in the database. This will be checked by ordering an item and then
            from the manager page looking for one new entry in the customer_order
            table and one new entry in the order_item table. (We assume a

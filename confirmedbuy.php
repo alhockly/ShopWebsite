@@ -4,9 +4,16 @@
 session_start();
 
 $user= $_SESSION['User'];
-
+$name= $_SESSION['name'];
 $item_code = $_GET[ 'item' ];
 $promo = $_GET[ 'promo' ];
+
+
+if  ($name=="Manager"){
+	echo "<script>alert(\"Managers cannot place an order!\")</script>";
+	echo "<a href=\"index.php\">back to home</a>";
+	EXIT();
+}
 
  $dbname = 'ah17451'; # Change to your username
  $dbuser = 'ah17451';
@@ -25,10 +32,14 @@ $result = mysqli_query( $link, $test_query );
 $row = mysqli_fetch_array( $result, MYSQLI_ASSOC );
 
 $stock = $row['item_stock_count'];
-if ($stock <=0){
+echo "<p>stock left ".$stock."</p>";
+if ($stock <1){
 	header ("location: item.php?item=".$item_code);
+	exit();
 	
 }
+
+
 ######
  
  
@@ -40,7 +51,7 @@ $test_query = "select * from promotion_code where code=\"".$promo."\"";
 $result = mysqli_query( $link, $test_query );
 if ( mysqli_num_rows( $result ) == 1 ){				####if there is at least 1 match
 
-		echo "promo found<br>";
+		echo "promo found - ";
 		$row = mysqli_fetch_array( $result, MYSQLI_ASSOC );
 		echo $row['discount']."% off<br>";
 		$discount = 1 - ($row['discount']/100);
@@ -49,6 +60,7 @@ if ( mysqli_num_rows( $result ) == 1 ){				####if there is at least 1 match
 }
 
 #########################################
+
 
 
 ####get price
@@ -61,34 +73,49 @@ $price = $row['item_price'];
 $price = $price*$discount;
 ######
 
+if($discount!=1){
+
+echo "Price after discount - £".$price."<br><br>";
+}
+else{
+	echo "price - £".$price."<br><br>";
+	
+}
 
 
+echo "<p>Green indicates SQL success, Red indicates failure</p>";
 
-echo "Price after discount - £".$price."<br>";
 
 ###UPDATE STOCK COUNT
 
-$update_stock = "UPDATE inventory SET item_stock_count=item_stock_count-1 WHERE item_code=\"".$item_code."\"";
-#echo $update_stock;
+$update_stock = "UPDATE inventory SET item_stock_count=item_stock_count-1 WHERE item_code=\"".$item_code."\";";
+
 $result = mysqli_query( $link, $update_stock );
-if($result){
-	echo "stock updated<br>";
+if ($result){
+	echo "<p style=\"color:green;\">".$update_stock."</p>";
 }
-###############
+else{
+	echo "<p style=\"color:red;\">".$$update_stock."</p>";
+	
+}
+
 
 ##MAKE customer_order
 
 $date_now = date("Y/m/d");
 
 $shipdate = date('Y/m/d', strtotime("+3 days"));
-$make_customer_order = "INSERT INTO customer_order (order_date,delivered,shipping_date,customer_number) VALUES (\"".$date_now."\", FALSE, ".$shipdate.",".$user.");";
+
+
+$make_customer_order = "INSERT INTO customer_order (order_date,delivered,shipping_date,customer_number) VALUES (now(), FALSE, adddate(now(), interval 3 day),".$user.");";
 
 $result = mysqli_query( $link, $make_customer_order );
+
 if ($result){
-	echo $make_customer_order."<br>";
+	echo "<p style=\"color:green;\">".$make_customer_order."</p>";
 }
 else{
-	echo "<p style=\"color:red;\">".$make_customer_order."</p><br>";
+	echo "<p style=\"color:red;\">".$make_customer_order."</p>";
 	
 }
 
@@ -99,13 +126,37 @@ else{
 
 
 #GET CUSTOMER_ORDER order_number
+$get_latest_order_num = "Select max(order_number) from customer_order;";
+
+
+$result = mysqli_query( $link, $get_latest_order_num );
+$row = mysqli_fetch_array( $result, MYSQLI_ASSOC );
+
+if ($result){
+	echo "<p style=\"color:green;\">".$get_latest_order_num."</p>";
+	
+}
+else{
+	echo "<p style=\"color:red;\">".$get_latest_order_num."</p>";
+	
+}
+
 
 ###
 
 ######Make order_item row
-$make_order_item = "INSERT INTO order_item VALUES (".$item_code.", ".$price.", 1231 ,1);";
+$make_order_item = "INSERT INTO order_item VALUES (\"".$item_code."\", ".$price.", ".$row['max(order_number)']." ,1);";
 
 $result = mysqli_query( $link, $make_order_item );
+
+if ($result){
+	echo "<p style=\"color:green;\">".$make_order_item."</p>";
+	
+}
+else{
+	echo "<p style=\"color:red;\">".$make_order_item."</p>";
+	
+}
 
 ########
  

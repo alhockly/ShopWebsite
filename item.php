@@ -46,58 +46,13 @@ mysqli_close( $link );
 	div.basic{
 		border:solid;
 		background-color:#B575A5;
-		padding:20px;
+		margin:100px;
 		display:block;
-		margin:50px 100px;
+		text-align:center;
+		
 		
 	}
-  
-  body {
-	  margin:0;
-	background-color:#703C63;
-  
-  }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 15;
-	padding-right:13;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-	align-self:center;
-	
-}
-
-li {
-   float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #BCBCBC;
-}
-
-.active {
-    background-color: #703C63;
-}
-  
- .itemimg{
-	 height:100%;
-	
-	 padding-right: 20px;
-	 
- }
  .main_img{
 	 
 	 height:300px;
@@ -112,18 +67,13 @@ li a:hover:not(.active) {
 
 <?php include ( "menu.php"); ?>
 
+<?php include ( "sidemenu.php"); ?>
+
 <?php $login_bool = require( "checklogin.php"); ?>
 
 
 <?php
 
-
-	
-	
-	
-	
-
-	
 
 $item_code = $_GET[ 'item' ];
 
@@ -160,7 +110,20 @@ mysqli_free_result( $result );
 mysqli_close( $link );
 ?>
 
-<div class="basic" style="margin-top:50px;text-align:center;">
+
+
+
+<div class="title">
+
+	<h1 class="title"></h1>
+    	
+   
+</div>
+
+
+
+
+<div class="basic">
 
 
 

@@ -5,62 +5,7 @@
   <title>Games page</title>
   <style>
   @import url("sitewide.css");
-	div.item{
-		border:solid;
-		background-color:#B575A5;
-		padding:20px;
-		display:block;
-		margin:10px;
-		height:100px;
-	}
-  
-  body {
-	  margin:0;
-	background-color:#703C63;
-  
-  }
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 15;
-	padding-right:13;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    width: 100%;
-	align-self:center;
 	
-}
-
-li {
-   float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #BCBCBC;
-}
-
-.active {
-    background-color: #703C63;
-}
-  
- .itemimg{
-	 height:100%;
-	#width:20%;
-	 padding-right: 20px;
-	 
- }
-  
   </style>
   
 </head>
@@ -69,7 +14,10 @@ li a:hover:not(.active) {
 
 <?php include ( "menu.php"); ?>
 
-<div style="padding:20px;margin-top:50px;text-align:center;">
+
+<?php include ( "sidemenu.php"); ?>
+
+<div class="title">
 
 	<h1 class="title">Welcome to the Games section</h1>
     	

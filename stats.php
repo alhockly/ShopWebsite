@@ -5,37 +5,14 @@
   <title>Stats</title>
   <style>
   @import url("sitewide.css");
-	div.item{
-		border:solid;
-		background-color:#B575A5;
-		padding:20px;
-		display:block;
-		margin:10px;
-		height:100px;
-	}
-  
-  body {
-	  margin:0;
-	background-color:#703C63;
-  
-  }
-
-
-  
- .itemimg{
-	 height:100%;
-	
-	 padding-right: 20px;
-	 
- }
   
   table{
 	  width:100%;
-	  padding-left:30px;
+	  padding-left:80px;
   }
   h1{
 	  
-	  padding-left:30px;
+	  padding-left:80px;
   }
   
   </style>
@@ -55,18 +32,14 @@ if($_SESSION['name']!="Manager"){
 }
 
 
-
-
-
-
 ?>
 
 <?php include ( "menu.php"); ?>
 
-
+<?php include ( "sidemenu.php"); ?>
  
 
-<div style="padding:20px;margin-top:50px;text-align:center;">
+<div class="title">
 
 	<h1 class="title">Stats Page</h1>
     	
