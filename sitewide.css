@@ -10,11 +10,15 @@ html{
 
 p.title{
 	font-family: 'Mukta Mahee', sans-serif;
-	
+	text-align:center;
+}
+h1.title{
+	font-family: 'Mukta Mahee', sans-serif;
+	text-align:center;
 }
 
 div.title{
-	
+	padding-left:60px;
 	padding-top:70px;
 	padding-bottom:10px;
 	text-align:center;
@@ -29,7 +33,7 @@ div.title{
 
 
 div.index_itemholder{
-	padding-left:80px;
+	padding-left:60px;
 	
 	
 }
@@ -40,9 +44,11 @@ div.item{
 	border:solid;
 	background-color:#B575A5;
 	padding:20px;
+	
 	display:block;
 	margin:10px 80px;
 	height:100px;
+	
 }
 
 .itemimg{

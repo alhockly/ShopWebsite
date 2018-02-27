@@ -146,7 +146,7 @@ echo "";
 <tr><th>item code</th><th>Value</th><th>order number</th><th>quantity</th></tr>
 <?php
 
-$query = "select * from order_item";
+$query = "select * from order_item ORDER BY order_number";
 $result = mysqli_query( $link, $query );
 while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 {

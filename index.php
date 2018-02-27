@@ -37,6 +37,10 @@
 <div class="index_itemholder">
 
 <?php
+
+
+
+
 # Connect to a database and access a table
 
 $dbname = 'ah17451'; # Change to your username

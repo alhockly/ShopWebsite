@@ -12,6 +12,8 @@ $promo = $_GET[ 'promo' ];
 if  ($name=="Manager"){
 	echo "<script>alert(\"Managers cannot place an order!\")</script>";
 	echo "<a href=\"index.php\">back to home</a>";
+	
+	header('Refresh: 1; URL=index.php;');
 	EXIT();
 }
 
