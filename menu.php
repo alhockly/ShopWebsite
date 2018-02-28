@@ -39,7 +39,7 @@ if ($login_bool=="1"){
 	
 }
 
-echo "<li style=\"vertical-align: middle;\"><form action=\"search.php\"><input  type=\"text\" name=\"search\" value=\"\"></form></li>";
+echo "<li class=\"topmenu\"><form action=\"search.php\"><input  type=\"text\" name=\"search\" value=\"\"></form></li>";
 
 
 ##Login 
