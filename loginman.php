@@ -55,8 +55,8 @@ function validateForm() {
 
 <div style="padding:70px;text-align:center;">
 
-	<h1 class="title">Log on Page</h1>
-    	<p>This page also works for the manager but if you want a seperate page then click <a href="loginman.php">here</a></p>
+	<h1 class="title">MANAGER LOGIN</h1>
+
    
 </div>
 
@@ -170,7 +170,10 @@ if ( mysqli_num_rows( $result ) == 1 ) # Number of result rows
 
 </div>
 
+<div class="title">
 
+<img src="frogo.gif">
+</div>
 
 
 

@@ -181,8 +181,7 @@ INSERT INTO inventory VALUES (
 14,
 12 );
 
---ADDED 005 & 006
-
+-- ADDED 005 & 006 
 -- MUSIC
 
 INSERT INTO inventory VALUES (

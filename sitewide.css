@@ -136,6 +136,8 @@ li.sidemenu {
     text-decoration: none;
 	padding-left:6px;
 	padding-right:6px;
+	padding-top:6px;
+	padding-bottom:6px;
 	display:inline-block;
 }
 

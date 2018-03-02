@@ -119,19 +119,20 @@ while( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) )
 
 	mysqli_free_result( $result );
 	if($login_bool && $_SESSION['name']!="Manager"){			//if logged in AND not manager
-		echo "logged in and not manager";
+		
 		//check if user has left a review for this item already
 		$check_for_review = "select * from review where customer_number=".$user." AND item_code=\"".$item_code."\";";
-		echo $check_for_review."<br>";
+		//echo $check_for_review."<br>";
 		$result = mysqli_query( $link, $check_for_review );
 		
-		echo "num rows ".mysql_num_rows($result);
+		
+		$row = mysqli_fetch_array($result);
+	
+
+		if ( mysqli_num_rows($result) == 1  ){		//if there is a review for this user and item
 		
 		
-		if ( mysql_num_rows($result) == 1  ){		//if there is a review for this user and item
-		
-		
-			echo "<p>Thanks for the review</p>";
+			echo "<p>Thanks for the review of ".$row['rating']." Stars</p>";
 		}
 		else{
 		
