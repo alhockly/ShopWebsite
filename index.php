@@ -102,7 +102,10 @@ mysqli_close( $link );
 </div>
 
 
+<div style="margin-left:60px;">
+<a href="reset.php">Reset DB</a>
 
+</div>
 
 
 </body>
